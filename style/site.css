@@ -1,0 +1,74 @@
+/*html { 
+  background: url(../images/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
+
+h1 {
+    font-family: 'Arsenal', sans-serif;
+    font-size: 50px;
+    font-weight: 100;
+    color: #3d5349;
+    padding-bottom: 0;
+}
+
+body{
+    font-family: 'Arsenal', sans-serif;
+    color: #3d5349;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+p span 
+{
+    display: block;
+}
+
+a{
+    color: #003125;
+    text-decoration: none;
+    padding-bottom: 0;
+}
+
+a:hover {
+    color:#666; 
+    text-decoration:none;
+    border-bottom: 1px #003125 solid;
+	}
+
+.bio a{
+    color: #003125;
+    text-decoration: none;
+    padding-bottom: 0;
+    border-bottom: none;
+    font-weight: bold;
+}
+
+.bio a:hover {
+    color:#666;
+    text-decoration:none;
+}
+
+#logo{
+    width: 180px;
+    height: 180px;
+    background: url('../images/logo.png') no-repeat center center;
+    background-size: contain;
+    margin: 15% auto -20px auto;
+    text-indent: -10000px;
+}
+
+#intro {
+    position: absolute;
+    top: 195px;
+    left: 87px;
+    width: 450px;	
+    line-height: 1.5em;
+}
+
+#mainText {
+    
+}
+
