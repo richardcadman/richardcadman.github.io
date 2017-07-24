@@ -62,8 +62,8 @@ a:hover {
 
 #intro {
     position: absolute;
-    top: 195px;
-    left: 87px;
+    top: 20%;
+    left: 10%;
     width: 450px;	
     line-height: 1.5em;
 }
