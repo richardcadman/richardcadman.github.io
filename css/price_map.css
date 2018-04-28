@@ -1,0 +1,57 @@
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. *
+
+    /*Layout*/ 
+        
+    html {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        }
+    
+    body {
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        }    
+        
+    #map {
+        background-color: aliceblue;
+        height: 80%;
+        overflow : hidden;
+        box-sizing: border-box;
+        
+        }    
+    
+    #header {
+        box-sizing: border-box;
+        width: 100%;
+        }    
+        
+    h3 {    
+        font-family: Roboto;
+        font-size: 25px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        }
+        
+    h5 {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 200;
+        margin-bottom: 20px;    
+        }    
+        
+    #footer {
+        font-family: Roboto;
+        padding-top: 20px;
+        height: 20px;
+        font-size: 15px;
+        color: #202020;
+        text-align: right;
+        } 
+    
+    #footer a {
+        color: #202020;
+        text-decoration: none;
+        }
