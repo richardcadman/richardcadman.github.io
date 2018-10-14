@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html>
-    
+
   <head>
-    <link rel="stylesheet" type="text/css" href="style/normalize.css">  
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
-          
+    <link rel="stylesheet" type="text/css" href="style/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
     <style>
-       
-    /*Layout*/ 
-        
+
+    /*Layout*/
+
     html {
         height: 100%;
         margin: 0px;
         padding: 0px;
         }
-    
+
     body {
         height: 100%;
         padding: 20px;
         box-sizing: border-box;
-        }    
-        
+        }
+
     #map {
         background-color: aliceblue;
         height: 80%;
         overflow : hidden;
         box-sizing: border-box;
-        
-        }    
-    
+
+        }
+
     #header {
         box-sizing: border-box;
         width: 100%;
-        }    
-        
-    h3 {    
+        }
+
+    h3 {
         font-family: Roboto;
         font-size: 25px;
         font-weight: 300;
         margin-bottom: 20px;
         }
-        
+
     h5 {
         font-family: Roboto;
         font-size: 15px;
         font-weight: 200;
-        margin-bottom: 20px;    
-        }    
-        
+        margin-bottom: 20px;
+        }
+
     #footer {
         font-family: Roboto;
         padding-top: 20px;
@@ -55,15 +55,15 @@
         font-size: 15px;
         color: #202020;
         text-align: right;
-        } 
-    
+        }
+
     #footer a {
         color: #202020;
         text-decoration: none;
         }
-        
-    /*Controls*/ 
-        
+
+    /*Controls*/
+
     .controls {
         margin-top: 10px;
         border: 1px solid transparent;
@@ -97,53 +97,53 @@
         background-color: #4d90fe;
         margin-left: 12px;
         padding: 5px 11px 0px 11px;
-      }    
-        
-        
+      }
+
+
     </style>
-  
+
  </head>
-    
+
   <body>
-    
+
     <div id="header">
     <h3 style="display: inline-block; width: 50%; box-sizing: border-box;">Should I Cycle?</h3>
-    <h5 id=outputMessage style="display: inline-block; width: 49%; box-sizing: border-box; text-align: right">enter two addresses to start</h5>    
+    <h5 id=outputMessage style="display: inline-block; width: 49%; box-sizing: border-box; text-align: right">enter two addresses to start</h5>
     </div>
-      
+
       <input id="origin-input" class="controls" type="text"
         placeholder="Enter an origin location">
 
       <input id="destination-input" class="controls" type="text"
         placeholder="Enter a destination location">
-      
-    <div id="map"></div>  
+
+    <div id="map"></div>
     <div id="footer">
     made by <a href="http://rich.fyi">rich</a>
     </div>
-           
-  
-        
+
+
+
     <script>
-        
+
     //Global Scope Variable Declarations
     var originKey = '';
-    var destinationKey =''; 
+    var destinationKey ='';
     var cycleDuration = -1;
-    var publicDuration = -1;    
-        
-    //Initialise Map Function   
+    var publicDuration = -1;
+
+    //Initialise Map Function
       function initMap() {
-        
-        // Some dummy variables for directions  
+
+        // Some dummy variables for directions
         //var shadwell_basin = new google.maps.LatLng(51.5044812, -0.0586697);
         //var soho_theatre = new google.maps.LatLng(51.5144706, -0.1373224);
-        
+
         // Where to centre map
-        var initLondon = {lat: 51.5114312, lng: -0.117418};  
-          
-        // The getElementByID finds the map div on the page, it then adds properties 'zoom' and 'center' to the map 
-          
+        var initLondon = {lat: 51.5114312, lng: -0.117418};
+
+        // The getElementByID finds the map div on the page, it then adds properties 'zoom' and 'center' to the map
+
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
           center: initLondon,
@@ -259,29 +259,29 @@
         ],
 
         });
-        
-        /*  
-        //This adds a marker  
+
+        /*
+        //This adds a marker
         var marker = new google.maps.Marker({
           position: initLondon,
           map: map
         });
-          
+
         //Define the directionsDisplay
         var directionsDisplay = new google.maps.DirectionsRenderer({
           map: map
         });
-        
+
         // Set destination, origin and travel mode
         var request = {
             destination: soho_theatre,
             origin: shadwell_basin,
             travelMode: 'BICYCLING'
         };
-        
+
         // Pass the directions request to the directions service.
         var directionsService = new google.maps.DirectionsService();
-        
+
         directionsService.route(request, function(response, status) {
           if (status == 'OK') {
             // Display the route on the map.
@@ -289,17 +289,17 @@
           }
         });
         */
-        
-        new AutocompleteDirectionsHandler(map); 
-          
-      
+
+        new AutocompleteDirectionsHandler(map);
+
+
     }
-        
-        
-          
-        
+
+
+
+
         ////////////////////////AUTOCOMPLETE
-          
+
     function AutocompleteDirectionsHandler(map) {
       this.map = map;
       this.originPlaceId = null;
@@ -327,14 +327,14 @@
       this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
       this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
       //this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
-           
-        
+
+
     }
 
     // Sets a listener on a radio button to change the filter type on Places
     // Autocomplete.
-    
-    /*    
+
+    /*
     AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
       var radioButton = document.getElementById(id);
       var me = this;
@@ -357,14 +357,14 @@
         if (mode === 'ORIG') {
           me.originPlaceId = place.place_id;
           originKey = place.place_id;
-          //console.log(originKey);    
-             
+          //console.log(originKey);
+
         } else {
           me.destinationPlaceId = place.place_id;
           destinationKey = place.place_id;
-          //console.log(destinationKey);  
+          //console.log(destinationKey);
         }
-         
+
         me.route();
       });
 
@@ -374,7 +374,7 @@
         if (!this.originPlaceId || !this.destinationPlaceId) {
             return;
         }
-        
+
         var me = this;
 
           this.directionsService.route({
@@ -393,18 +393,18 @@
             }
           });
         };
-    
 
-          
-        ///////////////////////////////////////////////////////////////Calculating whether you should cycle  
-          
+
+
+        ///////////////////////////////////////////////////////////////Calculating whether you should cycle
+
         ////////// Calculate travel time
-          
-          
+
+
         //How the service works: A successful call to the Distance Matrix service returns a DistanceMatrixResponse object and a DistanceMatrixStatus object. These are passed to the callback function you specified in the request. The DistanceMatrixResponse object contains distance and duration information for each origin/destination pair for which a route could be calculated.
-        
+
         function calculateTravelTime(originKey, destinationKey, travelMode, callback) {
-        
+
         var cycleService = new google.maps.DistanceMatrixService();
         cycleService.getDistanceMatrix(
             {
@@ -415,14 +415,14 @@
                 avoidHighways: false,
                 avoidTolls: false
             }, callback);
-        
+
         }
-          
-    
+
+
         ////////////Distance Matrix Callback Function 1
-        
+
         function handleCycle(response, status) {
-              
+
             //Parsing the results
             //The DistanceMatrixResponse object contains one row for each origin that was passed in the request. Each row contains an element field for each pairing of that origin with the provided destination(s).
 
@@ -436,7 +436,7 @@
                         var element = results[j];
                         var distance = element.distance.text;
                         var duration = element.duration.text;
-                        
+
                         //Turn duration into minutes, round up to integer
                         cycleDuration = Math.ceil((element.duration.value)/60);
                         var from = origins[i];
@@ -450,12 +450,12 @@
                     }
                   }
             }
-          
-          
+
+
         //////////Distance Matrix Callback Function 2
-          
+
         function handlePublic(response, status) {
-          
+
             //Parsing the results
             //The DistanceMatrixResponse object contains one row for each origin that was passed in the request. Each row contains an element field for each pairing of that origin with the provided destination(s).
 
@@ -469,34 +469,34 @@
                         var element = results[j];
                         var distance = element.distance.text;
                         var duration = element.duration.text;
-                        
+
                         //Turn duration into minutes, round up to integer
                         publicDuration = Math.ceil((element.duration.value)/60);
                         var from = origins[i];
                         var to = destinations[j];
 
                         console.log("The public transport duration is "+publicDuration+" minutes");
-                        
+
                         handleDurations(); //Calls the function to calculate whether you should cycle or not
 
                       }
                     }
                   }
             }
-          
-         
+
+
         //handleDurations - Logic for calculating whether you should cycle or not
-         
-          
+
+
         function handleDurations() {
-            
+
             //Only runs if both the publicDuration and the cycleDuration have pinged back from the google API
             if (publicDuration != -1 && cycleDuration != -1) {
-                
+
                 var difference = publicDuration - cycleDuration;
-                
+
                 console.log(difference);
-                
+
                 if (difference >= 3) {
                     console.log("It's quicker to cycle, don't be mug and pay for the bus");
                     document.getElementById("outputMessage").innerHTML = "It's quicker to cycle, don't be a mug and pay for the bus";
@@ -508,21 +508,21 @@
                     document.getElementById("outputMessage").innerHTML = "It's basically the same time, get on  your bike - burn cals not cash pal";
                 }
             }
-        
-        }
-          
-     //END   
-          
 
-          
-        
+        }
+
+     //END
+
+
+
+
     </script>
-    
+
     <!-- this is the API call below, the 'callback' parameter executes the initMap function above. The 'async' attribute allows allows the browser to continue rendering the rest of your page while the API loads. The 'key' parameter contains your API key-->
-      
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeykvIfle3-QKnsTSYTbgkbXOnmLRTfu0&libraries=places&callback=initMap">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqDhTbhw6tdOVrLVK55PXXTX-8TsCjgcE&libraries=places&callback=initMap">
     </script>
-        
-    </script>  
-    </body>  
+
+    </script>
+    </body>
 </html>
